@@ -1,0 +1,9 @@
+@import './colors.scss';
+
+.text--orange {
+    color: $orange
+}
+
+.capitalize-first-letter::first-letter {
+    text-transform: capitalize;
+}
