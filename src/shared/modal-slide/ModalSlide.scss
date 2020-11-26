@@ -1,0 +1,33 @@
+@import '../../assets/styles/colors.scss';
+
+.modal-slide {
+    margin: auto;
+    border-radius: 16px;
+    background-color: white;
+    height: calc(100vh - 15px);
+
+    max-width: 485px;
+    max-height: 612px;
+    margin-top: 15px;
+
+    header {
+        z-index: 1;
+        border-bottom: 1px solid rgba($black, 0.15);
+        padding: 15px;
+
+        & div:first-child {
+            min-width: 28px;
+        }
+
+        p {
+            margin: 0;
+            width: 100%;
+            margin-left: 16px;
+        }
+    }
+
+    section {
+        padding: 20px 18px;
+        z-index: 1;
+    }
+}
