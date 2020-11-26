@@ -1,0 +1,39 @@
+@import '../../../../assets/styles/colors.scss';
+
+#modal-dialog {
+
+    .dialog {
+        max-width: 485px;
+        min-width: 310px;
+        width: 50%;
+        background: #fafafa;
+
+        box-shadow: 0px 24px 38px rgba(0, 0, 0, 0.14);
+        border-radius: 10px;
+        padding: 19px 27px;
+        position: fixed;
+
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        h1, p {
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            margin-bottom: 6px;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        .button ~ .button {
+            margin-left: 10px;
+        }
+    }
+
+}

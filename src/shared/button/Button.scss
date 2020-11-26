@@ -4,6 +4,10 @@
     font-size: 17px;
     border-radius: 8px;
     border: 1px solid rgba($black, 0.1);
+
+    &:focus {
+        border-radius: 8px;
+    }
 }
 
 .button {
@@ -13,7 +17,6 @@
     box-shadow: 0 2px 8px rgba($black, 0.05);
     background: #fbfbfb;
     color: #4a4a4a;
-    width: 100%;
 }
 
 .button--primary {
@@ -22,7 +25,6 @@
     background: $orange;
     padding: 8px 24px;
     color: $white;
-    display: flex;
 
     justify-content: center;
     border: 1px solid rgba($black, 0.05);
@@ -35,6 +37,13 @@
     background: $white;
     font-weight: 600;
     border: 1px solid rgba($black, 0.05);
+}
+
+.button--danger {
+    @extend .base-button;
+
+    color: $red;
+    background: $white;
 }
 
 .button--pill {

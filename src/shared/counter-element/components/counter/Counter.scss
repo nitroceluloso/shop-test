@@ -1,11 +1,7 @@
 .counter {
 
-    & > div {
-        margin-right: 20px;
+    & > div ~ div {
+        margin-left: 20px;
         font-size: 20px;
-    }
-
-    & > div:last-child {
-        margin-right: 0;
     }
 }
