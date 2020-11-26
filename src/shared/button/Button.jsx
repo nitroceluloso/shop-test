@@ -16,7 +16,7 @@ const Button = ({
     onClickHandler = () => {}
 }) => {
 
-    const classNameStr = classnames('button', 'capitalize-first-letter', getClassName(style));
+    const classNameStr = classnames('button', getClassName(style));
 
     return (
         <button
