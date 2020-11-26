@@ -1,0 +1,7 @@
+@import './colors.scss';
+
+.fill-silver {
+    svg * {
+        fill: $silver;
+    }
+}
