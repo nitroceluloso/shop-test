@@ -1,0 +1,17 @@
+@import '../../assets/styles/colors.scss';
+
+.action-bar {
+    position: fixed;
+    bottom: 0;
+    width: calc(100% - 30px);
+    box-sizing: border-box;
+
+    left: 50%;
+    transform: translateX(-50%);
+    border-top: 1px solid rgba($black, 0.1);
+
+    & > div {
+        max-width: 550px;
+        padding: 15px 0;
+    }
+}

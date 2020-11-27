@@ -16,7 +16,7 @@ const Button = ({
     onClickHandler = () => {}
 }) => {
 
-    const classNameStr = classnames('button', getClassName(style));
+    const classNameStr = classnames('button', 'flex-justify-center', getClassName(style));
 
     return (
         <button

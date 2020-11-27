@@ -4,6 +4,8 @@
     font-size: 17px;
     border-radius: 8px;
     border: 1px solid rgba($black, 0.1);
+    min-width: 71px;
+    max-height: 40px;
 
     &:focus {
         border-radius: 8px;
@@ -13,7 +15,7 @@
 .button {
     @extend .base-button;
 
-    padding: 12px 18px;
+    padding: 8px 18px;
     box-shadow: 0 2px 8px rgba($black, 0.05);
     background: #fbfbfb;
     color: #4a4a4a;
