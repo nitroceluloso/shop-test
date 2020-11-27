@@ -27,10 +27,10 @@ const Counter = ({
                 { amount }
             </div>
             <div
-                className="text--orange cursor--pointer"
+                className="flex-align-center fill-orange cursor--pointer "
                 onClick={decreace}
             >
-                +
+                <Icon name="plus"/>
             </div>
         </div>
     );
