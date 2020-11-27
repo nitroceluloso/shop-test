@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Plus = ({ height= '20px', width= '20px' }) => {
+const Plus = ({ height= 20, width= 20 }) => {
     return (
         <svg height={height} width={width} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0 10C0 9.21102 0.639593 8.57143 1.42857 8.57143H18.5714C19.3604 8.57143 20 9.21102 20 10C20 10.789 19.3604 11.4286 18.5714 11.4286H1.42857C0.639594 11.4286 0 10.789 0 10Z" fill="white"/>
