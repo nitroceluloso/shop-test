@@ -1,0 +1,8 @@
+.counter-list__header {
+    padding: 0 25px;
+
+    span + span {
+        margin-left: 7px;
+        margin-right: 7px;
+    }
+}

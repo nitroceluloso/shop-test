@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './assets/styles/index.scss';
 
+import CounterModule from "./modules/counter/Counter.module";
+
 // You don't have to use `fetch` btw, use whatever you want
 const getCounters = () => 
   fetch('/api/v1/counter', { method: 'get' })
@@ -13,7 +15,7 @@ const App = () => {
   }, []);
 
   return (
-    <h1>Hello, Cornershop!</h1>
+    <CounterModule />
   );
 };
 
