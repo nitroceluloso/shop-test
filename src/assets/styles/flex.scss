@@ -1,23 +1,28 @@
 .flex {
-    display: flex;;
+    display: flex;
 }
 
 .flex-space-between {
-    display: flex;
+    @extend .flex;
     justify-content: space-between;
 }
 
 .flex-justify-center {
-    display: flex;
+    @extend .flex;
     justify-content: center;
 }
 
 .flex-align-center {
-    display: flex;
+    @extend .flex;
     align-items: center;
 }
 
 .flex-direction-row-reverse {
-    display: flex;
+    @extend .flex;
     flex-direction: row-reverse;
+}
+
+.flex-align-items-baseline {
+    @extend .flex;
+    align-items: baseline;
 }

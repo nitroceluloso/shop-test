@@ -8,28 +8,32 @@ import classnames from "classnames";
 class CounterFilter extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isOnFocus: false
-        }
-    }
-
-    componentDidUpdate(prevProps) {
-        // const { filter: prevFilter } = prevProps;
-        // if(this.props.filter === '' && prevFilter !== '');
+        this.state = {}
     }
 
     onFocusHandler = () => {
-        this.setState({ isOnFocus: true });
+        const { onFocusChangeHandler = () => {} } = this.props;
+        onFocusChangeHandler(true)
     }
 
     onBlurHandler = () => {
-        this.setState({ isOnFocus: false });
+        const { onFocusChangeHandler = () => {} } = this.props;
+        onFocusChangeHandler(false)
     }
-    render() {
-        const { onChangeHandler, filter, onClearFilter } = this.props;
-        const { isOnFocus } = this.state;
 
-        const classStr = classnames('counter-filter', { 'flex flex-align-center flex-space-between': isOnFocus });
+    closeFilter = () => {
+        const { onClearFilter = ()=> {} } = this.props;
+        onClearFilter();
+        this.onBlurHandler();
+    }
+
+    render() {
+        const { onChangeHandler, filter, isOnFocus } = this.props;
+
+        const classStr = classnames(
+            'counter-filter',
+            { 'flex flex-align-center flex-space-between': isOnFocus }
+        );
 
         return (
             <header className={classStr}>
@@ -42,10 +46,7 @@ class CounterFilter extends Component {
                     isOnFocus &&
                     <Button
                         text="Cancel"
-                        onClickHandler={() => {
-                            this.onBlurHandler();
-                            onClearFilter();
-                        }}
+                        onClickHandler={this.closeFilter}
                     />
                 }
             </header>

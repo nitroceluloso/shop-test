@@ -19,7 +19,8 @@ const CounterElement = ({
             'counter-element': !isSelected
         },
         'flex',
-        'flex-space-between'
+        'flex-space-between',
+        'flex-align-items-baseline'
     );
 
     return (

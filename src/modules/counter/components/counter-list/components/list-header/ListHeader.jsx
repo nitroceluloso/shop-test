@@ -4,6 +4,7 @@ import './ListHeader.scss';
 import Icon from "../../../../../../shared/icon/Icon";
 
 const ListHeader = ({
+    isLoading = false,
     counterList = [],
     counterListAmount = 0,
     idSelected = new Set(),
@@ -11,11 +12,12 @@ const ListHeader = ({
 }) => {
 
     if(counterList.length === 0) return '';
+    const idSelectedLength = idSelected.size === 0;
 
     return (
         <div className="counter-list__header">
             {
-                idSelected.size === 0 &&
+                idSelectedLength &&
                 <div className="flex">
                     <span className="font-soft-black fz17"> { counterList.length } items </span>
                     <span className="font-dark-silver fz17"> { counterListAmount } times </span>
@@ -26,7 +28,7 @@ const ListHeader = ({
             }
 
             {
-                idSelected.size !== 0 &&
+                !idSelectedLength &&
                 <div>
                     <span> { idSelected.size } </span>
                 </div>

@@ -2,4 +2,12 @@
     padding: 16px;
     max-width: 570px;
     margin: auto;
+
+    & > div:only-child {
+        margin: auto;
+    }
+
+    & > button {
+        margin-left: 15px;
+    }
 }

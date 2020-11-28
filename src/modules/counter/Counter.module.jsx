@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import CounterContent from "./components/counter-content/CounterContent";
+import { getCounterList, createCounter, updateCounter, deleteCounter } from "../../services/counter.service";
 
 class CounterModule extends Component {
     constructor(props) {
@@ -11,29 +12,44 @@ class CounterModule extends Component {
         }
     }
 
-    getCounter() {
-
+    componentDidMount() {
+        this.changeLoadingState(() => {
+            this.getCounter().then(this.changeLoadingState)
+        })
     }
 
-    addCounter() {
-
+    changeLoadingState = (cb = () => {}) => {
+        const { isLoading } = this.state;
+        this.setState({ isLoading: !isLoading }, cb);
     }
 
-    updateCounter() {
-
+    getCounter = () => {
+        return getCounterList().then((resp) => {
+            this.setState({ counterList: resp });
+        })
     }
 
-    deleteCounter() {
+    addCounter = (data) => {
+        createCounter(data);
+    }
 
+    updateCounter = (data) => {
+        updateCounter(data)
+    }
+
+    deleteCounter = (data) => {
+        deleteCounter(data)
     }
 
     render() {
-        const { counterList } = this.state;
+        const { counterList, isLoading } = this.state;
 
         return (
             <CounterContent
+                isLoading={isLoading}
                 counterList={counterList}
                 getCounter={this.getCounter}
+
             />
         );
     }
