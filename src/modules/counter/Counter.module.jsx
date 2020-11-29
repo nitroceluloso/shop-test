@@ -56,12 +56,13 @@ class CounterModule extends Component {
     updateCounter = (id, inc = true) => {
         updateCounter(id, inc)
             .then((updatedEl) => {
-                const { counterList } = this.state;
+                const { counterList, idSelected } = this.state;
                 const updatedList = counterList.map(el => el.id === updatedEl.id ? updatedEl : el);
+                const updateCounterList = setCounterListSelected(idSelected)(updatedList);
                 const counterListCount = getListCount(updatedList);
 
                 this.setState({
-                    counterList: updatedList,
+                    counterList: updateCounterList,
                     counterListCount
                 });
             });
