@@ -33,7 +33,6 @@ class CounterContent extends Component {
     render() {
         const {
             filter,
-            idSelected,
             counterListFiltered,
             isFilterOnFocus
         } = this.state;
@@ -42,9 +41,11 @@ class CounterContent extends Component {
             counterList,
             isLoading,
             counterListCount,
+            idSelected,
             getCounter = () => {},
             updateCounter = () => {},
-            setSelectedIds = () => {}
+            setSelectedIds = () => {},
+            deleteCounter = () => {}
         } = this.props;
 
         const counterListUsed = filter ? counterListFiltered : counterList;
@@ -71,6 +72,12 @@ class CounterContent extends Component {
                     getCounter={getCounter}
                     updateCounter={updateCounter}
                     onSelect={setSelectedIds}
+                />
+
+                <CounterNav
+                    idSelected={idSelected}
+                    counterList={counterList}
+                    deleteCounter={deleteCounter}
                 />
             </div>
         );

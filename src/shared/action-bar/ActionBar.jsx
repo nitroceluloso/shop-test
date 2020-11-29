@@ -5,24 +5,30 @@ import Button from "../button/Button";
 
 const ActionBar = ({
     showActions = false,
-    onAddClick = () => {}
+    onAdd = () => {},
+    onDelete = () => {},
+    onShare = () => {}
 }) => {
     return (
         <aside className="action-bar">
             <div
                 className="flex-space-between"
-                onClick={onAddClick}
+                // onClick={onAddClick}
             >
                 <div className="flex-space-between flex-align-center" style={ {width: '160px'} }>
                     {
                         showActions &&
                         <>
-                            <Button style="" icon="trash" />
-                            <Button style="" icon="share" />
+                            <Button  icon="trash"  onClickHandler={onDelete} />
+                            <Button  icon="share" onClickHandler={onShare} />
                         </>
                     }
                 </div>
-                <Button style="call-action" icon="plus" />
+                <Button
+                    type="call-action"
+                    icon="plus"
+                    onClickHandler={onAdd}
+                />
             </div>
         </aside>
     );

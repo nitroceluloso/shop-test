@@ -13,4 +13,4 @@ export const updateCounter = (id, inc = true) => {
     return post(url, { id });
 }
 
-export const deleteCounter = (data) => remove(data);
+export const deleteCounter = (id) => remove(RESOURCE_PATH, {id});

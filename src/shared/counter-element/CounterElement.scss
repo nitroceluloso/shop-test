@@ -2,7 +2,6 @@
 
 .counter-element {
     box-sizing: border-box;
-    // height: 67px;
     padding: 22px 24px;
     max-width: 570px;
 
@@ -10,7 +9,6 @@
 
     div:first-child {
         margin-top: 2px;
-        font-size: 17px;
         color: #212121;
     }
 }
@@ -19,9 +17,12 @@
     @extend .counter-element;
 
     background-color: rgba($color: $orange, $alpha: 0.2);
-    // height: 53px;
-    margin: 7px 10px;
+    margin: 6px auto 8px auto;
     padding: 16px 14px 14px 14px;
-
     border-radius: 6px;
+    max-width: 390px;
+
+    @media screen and (min-width: 1150px) {
+        max-width: 550px;
+    }
 }

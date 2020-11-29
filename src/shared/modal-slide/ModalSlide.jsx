@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import ReactDOM from "react-dom";
 import './ModalSlide.scss';
 
-// import Button from "../button/Button";
 import ModalBackground from "../modal-background/ModalBackground";
 import Icon from "../icon/Icon";
 

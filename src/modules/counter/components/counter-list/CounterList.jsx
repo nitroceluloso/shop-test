@@ -1,4 +1,5 @@
 import React from 'react';
+import './CounterList.scss';
 
 import ListHeader from "./components/list-header/ListHeader";
 import ListCounter from "./components/list-counter/ListCounter";
@@ -17,7 +18,7 @@ const CounterList = ({
     onSelect= () => {}
 }) => {
 
-    const classStr = classnames({ 'opacity-20': isTransparentList });
+    const classStr = classnames('counter-list', { 'opacity-20': isTransparentList });
     const hasData = counterList.length !== 0;
     const isEmpty = counterList.length === 0 && !hasFilter;
     const isEmptyFiltered = counterList.length === 0 && hasFilter;

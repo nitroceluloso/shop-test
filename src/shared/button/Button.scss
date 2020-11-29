@@ -25,6 +25,11 @@
     display: block;
 }
 
+.button--icon {
+    @extend .button;
+    min-width: 70px;
+}
+
 .button--primary {
     @extend .base-button;
 
@@ -50,6 +55,7 @@
 
     color: $red;
     background: $white;
+    min-width: 100px;
 }
 
 .button--pill {

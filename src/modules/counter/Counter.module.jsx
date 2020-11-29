@@ -68,21 +68,36 @@ class CounterModule extends Component {
             });
     }
 
-    deleteCounter = (data) => {
-        deleteCounter(data)
+    deleteCounter = (selectedCounterList) => {
+        selectedCounterList.forEach(element => {
+            deleteCounter(element.id)
+                .then((id) => {
+                    const { idSelected, counterList } = this.state;
+                    idSelected.delete(id);
+                    const updatedCounterList = counterList.filter(el => el.id !== id)
+
+                    this.setState({
+                        idSelected,
+                        counterList: updatedCounterList
+                    });
+                });
+        });
+
     }
 
     render() {
-        const { counterList, isLoading, counterListCount } = this.state;
+        const { counterList, isLoading, counterListCount, idSelected } = this.state;
 
         return (
             <CounterContent
                 isLoading={isLoading}
+                idSelected={idSelected}
                 counterList={counterList}
                 counterListCount={counterListCount}
                 getCounter={this.getCounter}
                 updateCounter={this.updateCounter}
                 setSelectedIds={this.setSelectedIds}
+                deleteCounter={this.deleteCounter}
             />
         );
     }
