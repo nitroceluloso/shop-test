@@ -33,8 +33,13 @@ class CounterModule extends Component {
         createCounter(data);
     }
 
-    updateCounter = (data) => {
-        updateCounter(data)
+    updateCounter = (id, inc = true) => {
+        updateCounter(id, inc)
+            .then((updatedEl) => {
+                const { counterList } = this.state;
+                const updatedList = counterList.map(el => el.id === updatedEl.id ? updatedEl : el);
+                this.setState({ counterList: updatedList });
+            });
     }
 
     deleteCounter = (data) => {
@@ -49,7 +54,7 @@ class CounterModule extends Component {
                 isLoading={isLoading}
                 counterList={counterList}
                 getCounter={this.getCounter}
-
+                updateCounter={this.updateCounter}
             />
         );
     }

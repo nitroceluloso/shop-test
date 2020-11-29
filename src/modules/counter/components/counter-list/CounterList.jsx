@@ -12,7 +12,8 @@ const CounterList = ({
     idSelected,
     counterListAmount,
     counterList,
-    getCounter = () => {}
+    getCounter = () => {},
+    updateCounter= () => {}
 }) => {
 
     const classStr = classnames({ 'opacity-20': isTransparentList });
@@ -33,6 +34,7 @@ const CounterList = ({
                 hasData &&
                 <ListCounter
                     counterList={counterList}
+                    updateCounter={updateCounter}
                 />
             }
 

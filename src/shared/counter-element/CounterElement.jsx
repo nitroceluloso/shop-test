@@ -8,7 +8,7 @@ const CounterElement = ({
     id,
     title,
     isSelected = false,
-    amount,
+    count,
     onClickHandler = () => { },
     onChangeHandler = () => {}
 }) => {
@@ -33,7 +33,7 @@ const CounterElement = ({
             </div>
             <Counter
                 id={id}
-                amount={amount}
+                count={count}
                 onChangeHandler={onChangeHandler}
             />
         </div>

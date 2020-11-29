@@ -4,10 +4,15 @@ import { counterListMapFn } from "./ListCounter.helper";
 
 const ListCounter = ({
     counterList = [],
+    updateCounter = () => {},
+    selectCounter = () => {}
 }) => {
+
+    const mapFn = counterListMapFn(selectCounter, updateCounter);
+
     return (
         <>
-            { counterList.map(counterListMapFn) }
+            { counterList.map(mapFn) }
         </>
     );
 }
