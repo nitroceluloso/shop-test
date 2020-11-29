@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './InputSearch.scss';
 
 import Icon from "../icon/Icon";
@@ -8,9 +8,9 @@ const InputSearch = ({
     name,
     value,
     placeholder = '',
-    // isActive = false ,
-    onChange,
-    onFocus
+    onChangehandler = () => {},
+    onFocusHandler = () => {},
+    onBlurHandler = () => {}
 }) => {
     return (
         <div className="search-input flex">
@@ -19,8 +19,9 @@ const InputSearch = ({
                 name={name}
                 value={value}
                 placeholder={placeholder}
-                onChange={onChange}
-                onFocus={onFocus}
+                onChange={onChangehandler}
+                onFocus={onFocusHandler}
+                onBlur={onBlurHandler}
             />
         </div>
     );

@@ -1,5 +1,5 @@
 import { getIcon } from "./Icon.helper";
 
-const Icon = ({ name }) => getIcon(name);
+const Icon = ({ name, height, width }) => getIcon(name, height, width);
 
 export default Icon;

@@ -2,8 +2,11 @@
 
 .counter-element {
     box-sizing: border-box;
-    height: 67px;
+    // height: 67px;
     padding: 22px 24px;
+    max-width: 570px;
+
+    margin: auto;
 
     div:first-child {
         margin-top: 2px;
@@ -16,7 +19,7 @@
     @extend .counter-element;
 
     background-color: rgba($color: $orange, $alpha: 0.2);
-    height: 53px;
+    // height: 53px;
     margin: 7px 10px;
     padding: 16px 14px 14px 14px;
 

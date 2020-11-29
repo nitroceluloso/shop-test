@@ -8,7 +8,7 @@ const CounterElement = ({
     id,
     title,
     isSelected = false,
-    amount,
+    count,
     onClickHandler = () => { },
     onChangeHandler = () => {}
 }) => {
@@ -19,7 +19,8 @@ const CounterElement = ({
             'counter-element': !isSelected
         },
         'flex',
-        'flex-space-between'
+        'flex-space-between',
+        'flex-align-items-baseline'
     );
 
     return (
@@ -32,7 +33,7 @@ const CounterElement = ({
             </div>
             <Counter
                 id={id}
-                amount={amount}
+                count={count}
                 onChangeHandler={onChangeHandler}
             />
         </div>

@@ -6,7 +6,8 @@ const Input = ({
     value,
     placeholder,
     onChange = () => {},
-    onFocus = () => {}
+    onFocus = () => {},
+    onBlur= () => {}
 }) => {
     return (
         <input
@@ -17,6 +18,7 @@ const Input = ({
             placeholder={placeholder}
             onChange={onChange}
             onFocus={onFocus}
+            onBlur={onBlur}
         />
     );
 }

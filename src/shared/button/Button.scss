@@ -19,6 +19,10 @@
     box-shadow: 0 2px 8px rgba($black, 0.05);
     background: #fbfbfb;
     color: #4a4a4a;
+
+    min-height: 48px;
+    min-width: 90px;
+    display: block;
 }
 
 .button--primary {

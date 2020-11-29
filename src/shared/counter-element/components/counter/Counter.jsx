@@ -7,28 +7,28 @@ import * as classnames from "classnames";
 
 const Counter = ({
     id,
-    amount = 0,
+    count = 0,
     onChangeHandler = () => {}
 }) => {
 
-    const [ increace, decreace ] = actionWrapper(id, amount, onChangeHandler);
-    const amountClassStr = classnames({ 'font-dark-silver': amount === 0 });
-    const minusClassStr = classnames('cursor--pointer flex-align-center', { 'fill-silver': amount === 0 });
+    const [ increace, decreace ] = actionWrapper(id, count, onChangeHandler);
+    const amountClassStr = classnames({ 'font-dark-silver': count === 0 });
+    const minusClassStr = classnames('cursor--pointer flex-align-center', { 'fill-silver': count === 0 });
 
     return (
         <div className="counter flex">
             <div
                 className={minusClassStr}
-                onClick={increace}
+                onClick={decreace}
             >
                 <Icon name="minus" />
             </div>
             <div className={amountClassStr}>
-                { amount }
+                { count }
             </div>
             <div
                 className="flex-align-center fill-orange cursor--pointer "
-                onClick={decreace}
+                onClick={increace}
             >
                 <Icon name="plus"/>
             </div>
