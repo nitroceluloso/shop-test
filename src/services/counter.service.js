@@ -1,4 +1,4 @@
-import { get, post, put, remove } from "./service.helper";
+import { get, post, remove } from "./service.helper";
 
 const RESOURCE_PATH = 'api/v1/counter';
 
