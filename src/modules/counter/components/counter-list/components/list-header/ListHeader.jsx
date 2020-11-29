@@ -6,7 +6,7 @@ import Icon from "../../../../../../shared/icon/Icon";
 const ListHeader = ({
     isLoading = false,
     counterList = [],
-    counterListAmount = 0,
+    counterListCount = 0,
     idSelected = new Set(),
     onRefresh = () => {}
 }) => {
@@ -20,7 +20,7 @@ const ListHeader = ({
                 idSelectedLength &&
                 <div className="flex">
                     <span className="font-soft-black fz17"> { counterList.length } items </span>
-                    <span className="font-dark-silver fz17"> { counterListAmount } times </span>
+                    <span className="font-dark-silver fz17"> { counterListCount } times </span>
                     <div onClick={onRefresh}>
                         <Icon name="refresh" />
                     </div>

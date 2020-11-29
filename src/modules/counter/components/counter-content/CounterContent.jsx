@@ -38,7 +38,7 @@ class CounterContent extends Component {
         const {
             filter,
             idSelected,
-            counterTotalAmoun,
+            // counterTotalAmoun,
             counterListFiltered,
             isFilterOnFocus
         } = this.state;
@@ -46,6 +46,7 @@ class CounterContent extends Component {
         const {
             counterList,
             isLoading,
+            counterListCount,
             getCounter = () => {},
             updateCounter = () => {}
         } = this.props;
@@ -69,7 +70,7 @@ class CounterContent extends Component {
                     hasFilter={hasFilter}
                     isTransparentList={isTransparentList}
                     idSelected={idSelected}
-                    counterTotalAmoun={counterTotalAmoun}
+                    counterListCount={counterListCount}
                     counterList={counterListUsed}
                     getCounter={getCounter}
                     updateCounter={updateCounter}

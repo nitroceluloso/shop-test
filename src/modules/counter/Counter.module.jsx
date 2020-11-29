@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import { getListCount } from "./Counter.helper";
 import CounterContent from "./components/counter-content/CounterContent";
 import { getCounterList, createCounter, updateCounter, deleteCounter } from "../../services/counter.service";
 
@@ -8,6 +9,7 @@ class CounterModule extends Component {
         super(props);
         this.state = {
             counterList: [],
+            counterListCount: 0,
             isLoading: false
         }
     }
@@ -25,7 +27,12 @@ class CounterModule extends Component {
 
     getCounter = () => {
         return getCounterList().then((resp) => {
-            this.setState({ counterList: resp });
+            const counterListCount = getListCount(resp);
+
+            this.setState({
+                counterListCount,
+                counterList: resp
+            });
         })
     }
 
@@ -38,7 +45,12 @@ class CounterModule extends Component {
             .then((updatedEl) => {
                 const { counterList } = this.state;
                 const updatedList = counterList.map(el => el.id === updatedEl.id ? updatedEl : el);
-                this.setState({ counterList: updatedList });
+                const counterListCount = getListCount(updatedList);
+
+                this.setState({
+                    counterList: updatedList,
+                    counterListCount
+                });
             });
     }
 
@@ -47,12 +59,13 @@ class CounterModule extends Component {
     }
 
     render() {
-        const { counterList, isLoading } = this.state;
+        const { counterList, isLoading, counterListCount } = this.state;
 
         return (
             <CounterContent
                 isLoading={isLoading}
                 counterList={counterList}
+                counterListCount={counterListCount}
                 getCounter={this.getCounter}
                 updateCounter={this.updateCounter}
             />

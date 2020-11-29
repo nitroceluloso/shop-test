@@ -10,7 +10,7 @@ const CounterList = ({
     hasFilter = false,
     isTransparentList = false,
     idSelected,
-    counterListAmount,
+    counterListCount,
     counterList,
     getCounter = () => {},
     updateCounter= () => {}
@@ -26,7 +26,7 @@ const CounterList = ({
             <ListHeader
                 counterList={counterList}
                 idSelected={idSelected}
-                counterListAmount={counterListAmount}
+                counterListCount={counterListCount}
                 onRefresh={getCounter}
             />
 
