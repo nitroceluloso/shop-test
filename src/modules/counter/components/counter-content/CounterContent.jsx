@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import CounterFilter from "../counter-filter/CounterFilter";
 import CounterList from "../counter-list/CounterList";
 import { filterCounterArray } from "./CounterContent.helper";
+import CounterNav from "../counter-nav/CounterNav";
 
 class CounterContent extends Component {
     constructor(props) {
@@ -10,14 +11,9 @@ class CounterContent extends Component {
         this.state = {
             filter: '',
             isFilterOnFocus: false,
-            idSelected: new Set(),
             counterTotalAmoun: 0,
             counterListFiltered: []
         }
-    }
-
-    onSelect() {
-
     }
 
     onFilter = ({ target }) => {
@@ -38,7 +34,6 @@ class CounterContent extends Component {
         const {
             filter,
             idSelected,
-            // counterTotalAmoun,
             counterListFiltered,
             isFilterOnFocus
         } = this.state;
@@ -48,7 +43,8 @@ class CounterContent extends Component {
             isLoading,
             counterListCount,
             getCounter = () => {},
-            updateCounter = () => {}
+            updateCounter = () => {},
+            setSelectedIds = () => {}
         } = this.props;
 
         const counterListUsed = filter ? counterListFiltered : counterList;
@@ -74,6 +70,7 @@ class CounterContent extends Component {
                     counterList={counterListUsed}
                     getCounter={getCounter}
                     updateCounter={updateCounter}
+                    onSelect={setSelectedIds}
                 />
             </div>
         );

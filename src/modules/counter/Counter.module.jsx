@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { getListCount } from "./Counter.helper";
+import { getListCount, setCounterListSelected } from "./Counter.helper";
 import CounterContent from "./components/counter-content/CounterContent";
 import { getCounterList, createCounter, updateCounter, deleteCounter } from "../../services/counter.service";
 
@@ -9,6 +9,7 @@ class CounterModule extends Component {
         super(props);
         this.state = {
             counterList: [],
+            idSelected: new Set(),
             counterListCount: 0,
             isLoading: false
         }
@@ -18,6 +19,18 @@ class CounterModule extends Component {
         this.changeLoadingState(() => {
             this.getCounter().then(this.changeLoadingState)
         })
+    }
+
+    setSelectedIds = (id) => {
+        const { idSelected, counterList } = this.state;
+        const isSelected = idSelected.has(id);
+        isSelected ? idSelected.delete(id) : idSelected.add(id);
+        const updatedCounterList = setCounterListSelected(idSelected)(counterList);
+
+        this.setState({
+            idSelected,
+            counterList: updatedCounterList
+        });
     }
 
     changeLoadingState = (cb = () => {}) => {
@@ -68,6 +81,7 @@ class CounterModule extends Component {
                 counterListCount={counterListCount}
                 getCounter={this.getCounter}
                 updateCounter={this.updateCounter}
+                setSelectedIds={this.setSelectedIds}
             />
         );
     }
