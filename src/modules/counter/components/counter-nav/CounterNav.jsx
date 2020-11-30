@@ -38,6 +38,7 @@ class CounterNav extends Component {
             <div>
                 <ActionBar
                     showActions={showActions}
+                    counterList={counterList}
                     onDelete={onChangeDeleteModal}
                     onAdd={onChangeAddModal}
                 />

@@ -9,6 +9,7 @@
     left: 50%;
     transform: translateX(-50%);
     border-top: 1px solid rgba($black, 0.1);
+    background-color: $white;
 
     & > div {
         max-width: 550px;

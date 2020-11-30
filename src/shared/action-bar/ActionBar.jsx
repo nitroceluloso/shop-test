@@ -2,25 +2,25 @@ import React from 'react';
 import './ActionBar.scss';
 
 import Button from "../button/Button";
+import ButtonShare from "./components/button-share/ButtonShare";
 
 const ActionBar = ({
     showActions = false,
+    counterList = [],
     onAdd = () => {},
     onDelete = () => {},
-    onShare = () => {}
 }) => {
     return (
         <aside className="action-bar">
             <div
                 className="flex-space-between"
-                // onClick={onAddClick}
             >
                 <div className="flex-space-between flex-align-center" style={ {width: '160px'} }>
                     {
                         showActions &&
                         <>
                             <Button  icon="trash"  onClickHandler={onDelete} />
-                            <Button  icon="share" onClickHandler={onShare} />
+                            <ButtonShare counterList={counterList} />
                         </>
                     }
                 </div>
