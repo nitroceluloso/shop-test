@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "concurrently \"react-scripts start\" \"node server/index.js\"",
-    "test": "jeste",
+    "test": "jest",
     "test:coverage": "jest --coverage"
   },
   "author": "Cornershop",
@@ -15,6 +15,7 @@
     "classnames": "^2.2.6",
     "concurrently": "^5.1.0",
     "cors": "^2.8.5",
+    "enzyme-adapter-react-16": "^1.15.5",
     "express": "^4.14.1",
     "lodash": "^4.17.4",
     "morgan": "^1.8.1",
@@ -38,7 +39,9 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@babel/plugin-transform-react-jsx": "^7.12.7",
+    "enzyme": "^3.11.0",
     "identity-obj-proxy": "^3.0.0"
   }
 }
