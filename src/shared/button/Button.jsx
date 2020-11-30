@@ -12,10 +12,15 @@ import { getClassName } from "./Button.helper";
 const Button = ({
     text,
     icon,
-    style = 'default',
+    type = 'default',
     onClickHandler = () => {}
 }) => {
-    const classNameStr = classnames('button', 'flex-justify-center', getClassName(style));
+    const classNameStr = classnames(
+        'button',
+        'flex-justify-center',
+        getClassName(type),
+        { 'button--icon': icon? true : false }
+    );
 
     return (
         <button

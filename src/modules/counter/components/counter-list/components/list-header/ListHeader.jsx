@@ -29,8 +29,11 @@ const ListHeader = ({
 
             {
                 !idSelectedLength &&
-                <div>
-                    <span> { idSelected.size } </span>
+                <div className="flex">
+                    <span className="text--orange"> { idSelected.size } selected </span>
+                    <div onClick={onRefresh}>
+                        <Icon name="refresh" />
+                    </div>
                 </div>
             }
         </div>

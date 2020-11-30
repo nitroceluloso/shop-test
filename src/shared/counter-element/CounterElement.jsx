@@ -26,8 +26,8 @@ const CounterElement = ({
     return (
         <div className={classStr}>
             <div
-                className="w75 capitalize-first-letter"
-                onClick={onClickHandler}
+                className="w75 fz17 capitalize-first-letter"
+                onClick={ () => {onClickHandler(id)} }
             >
                 {title}
             </div>
