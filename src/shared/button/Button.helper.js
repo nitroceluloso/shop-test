@@ -1,7 +1,7 @@
 const classNameByStyle = new Map([
     ['call-action', 'button--primary'],
     ['action', 'button--secondary'],
-    ['default', 'button'],
+    ['default', ''],
     ['pill', 'button--pill'],
     ['danger', 'button--danger']
 ]);

@@ -1,10 +1,10 @@
 import React from 'react';
 import Input from "./Input";
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
 
 describe('Input [component]', () => {
     test('should render', () => {
-        const cmp = renderer.create(<Input/>);
-        expect(cmp).toBeDefined();
+        const cmp = shallow(<Input/>);
+        expect(cmp.is('.input-text')).toBe(true);
     });
 });
