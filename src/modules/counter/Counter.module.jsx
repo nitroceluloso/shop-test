@@ -39,18 +39,26 @@ class CounterModule extends Component {
     }
 
     getCounter = () => {
-        return getCounterList().then((resp) => {
-            const counterListCount = getListCount(resp);
+        return getCounterList()
+            .then((resp) => {
+                const counterListCount = getListCount(resp);
 
-            this.setState({
-                counterListCount,
-                counterList: resp
-            });
-        })
+                this.setState({
+                    counterListCount,
+                    counterList: resp
+                });
+            })
     }
 
-    addCounter = (data) => {
-        createCounter(data);
+    addCounter = (title) => {
+        return createCounter({title})
+            .then((el) => {
+                const { counterList } = this.state;
+                this.setState({
+                    counterList: counterList.concat([el])
+                });
+                return el;
+            });
     }
 
     updateCounter = (id, inc = true) => {
@@ -98,6 +106,7 @@ class CounterModule extends Component {
                 updateCounter={this.updateCounter}
                 setSelectedIds={this.setSelectedIds}
                 deleteCounter={this.deleteCounter}
+                addCounter={this.addCounter}
             />
         );
     }

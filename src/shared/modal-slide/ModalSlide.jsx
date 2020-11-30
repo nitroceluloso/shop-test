@@ -4,6 +4,7 @@ import './ModalSlide.scss';
 
 import ModalBackground from "../modal-background/ModalBackground";
 import Icon from "../icon/Icon";
+import Button from "../button/Button";
 
 class ModalSlide extends Component {
     constructor(props) {
@@ -30,21 +31,41 @@ class ModalSlide extends Component {
     }
 
     render() {
-        const { title, children } = this.props;
+        const { show } = this.state;
+        const {
+            title,
+            children,
+            hasButton = false,
+            buttonText,
+            buttonType,
+            buttonOnClick = () => {},
+            changeVisibility = () => {} } = this.props;
+
+        if(!show) return '';
 
         return ReactDOM.createPortal(
             (
                 <div className="modal-slide">
-                    <header className="flex-align-center">
-                        <div>
-                            <Icon name="circleClose"/>
-                        </div>
-                        <p className="fz22"> {title} </p>
-                    </header>
-                    <section>
-                        { children }
-                    </section>
-                    <ModalBackground display />
+                    <div className="modal-slide__content">
+                        <header className="flex-align-center border-box">
+                            <div onClick={changeVisibility}>
+                                <Icon name="circleClose"/>
+                            </div>
+                            <p className="fz22 capitalize-first-letter"> {title} </p>
+                            {
+                                hasButton &&
+                                <Button
+                                    type={buttonType}
+                                    text={buttonText}
+                                    onClickHandler={buttonOnClick}
+                                />
+                            }
+                        </header>
+                        <section>
+                            { children }
+                        </section>
+                    </div>
+                    <ModalBackground display={show} />
                 </div>
             ), this.domElement);
     }

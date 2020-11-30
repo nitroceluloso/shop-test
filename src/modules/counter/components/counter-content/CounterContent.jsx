@@ -45,7 +45,8 @@ class CounterContent extends Component {
             getCounter = () => {},
             updateCounter = () => {},
             setSelectedIds = () => {},
-            deleteCounter = () => {}
+            deleteCounter = () => {},
+            addCounter = () => {}
         } = this.props;
 
         const counterListUsed = filter ? counterListFiltered : counterList;
@@ -78,6 +79,7 @@ class CounterContent extends Component {
                     idSelected={idSelected}
                     counterList={counterList}
                     deleteCounter={deleteCounter}
+                    addCounter={addCounter}
                 />
             </div>
         );

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import ActionBar from "../../../../shared/action-bar/ActionBar";
 import DeleteModal from "./components/delete-modal/DeleteModal";
+import CreationModal from "./components/creation-modal/CreationModal";
+import { getDeleteModalTitle } from "./CounterNav.helper";
 
 class CounterNav extends Component {
     constructor(props) {
@@ -23,24 +25,34 @@ class CounterNav extends Component {
         deleteCounter(filteredList);
     }
 
-    render() { 
-        const { showDeleteModal } = this.state;
-        const { idSelected } = this.props;
+    render() {
+        const { showDeleteModal, showAddModal } = this.state;
+        const { idSelected, counterList, addCounter = () => {} } = this.props;
         const showActions = idSelected.size ? true : false;
+        const deleteTitle = getDeleteModalTitle(counterList);
 
-        const onChangeDeleteModal = () => {this.changeVisibility('showDeleteModal')};
+        const onChangeDeleteModal = () => { this.changeVisibility('showDeleteModal') };
+        const onChangeAddModal = () => {this.changeVisibility('showAddModal') };
 
         return (
             <div>
                 <ActionBar
                     showActions={showActions}
                     onDelete={onChangeDeleteModal}
+                    onAdd={onChangeAddModal}
                 />
 
                 <DeleteModal
                     show={showDeleteModal}
+                    title={deleteTitle}
                     onCancel={onChangeDeleteModal}
                     onDelete={this.onDelete}
+                />
+
+                <CreationModal
+                    show={showAddModal}
+                    changeVisibility={onChangeAddModal}
+                    addCounter={addCounter}
                 />
 
             </div>

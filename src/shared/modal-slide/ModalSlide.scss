@@ -1,33 +1,45 @@
 @import '../../assets/styles/colors.scss';
 
 .modal-slide {
-    margin: auto;
-    border-radius: 16px;
-    background-color: white;
-    height: calc(100vh - 15px);
+    height: 100vh;
+    width: 100%;
 
-    max-width: 485px;
-    max-height: 612px;
-    margin-top: 15px;
+    .modal-slide__content {
 
-    header {
-        z-index: 1;
-        border-bottom: 1px solid rgba($black, 0.15);
-        padding: 15px;
+        border-radius: 16px;
+        background-color: white;
+        height: calc(100vh - 15px);
+        position: absolute;
 
-        & div:first-child {
-            min-width: 28px;
+        max-width: 485px;
+        width: 100%;
+        height: calc(100vh - 15px);
+        top: 15px;
+
+        z-index: 2;
+
+        header {
+            z-index: 1;
+            border-bottom: 1px solid rgba($black, 0.15);
+            padding: 15px;
+            height: 70px;
+    
+            & div:first-child {
+                min-width: 28px;
+            }
+    
+            p {
+                margin: 0;
+                width: 100%;
+                margin-left: 16px;
+            }
+        }
+    
+        section {
+            padding: 20px 18px;
+            z-index: 1;
         }
 
-        p {
-            margin: 0;
-            width: 100%;
-            margin-left: 16px;
-        }
     }
 
-    section {
-        padding: 20px 18px;
-        z-index: 1;
-    }
 }
