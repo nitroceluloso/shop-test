@@ -27,7 +27,10 @@ class CreationModal extends Component {
     saveCounter = () => {
         const { addCounter = () => {}, changeVisibility = () => {} } = this.props;
         addCounter(this.state.name)
-            .then(changeVisibility);
+            .then(() => {
+                changeVisibility();
+                this.setState({ name: '' });
+            });
     }
 
     changeSugestionModalVisibility = () => {
