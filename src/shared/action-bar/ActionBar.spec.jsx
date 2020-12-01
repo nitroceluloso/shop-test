@@ -1,6 +1,6 @@
 import React from 'react';
 import ActionBar from "./ActionBar";
-import { shallow, mount } from 'ß';
+import { shallow, mount } from 'enzyme';
 
 describe('Action bar [component]', () => {
     test('should render', () => {
