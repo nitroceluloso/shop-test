@@ -3,7 +3,7 @@ import './Counter.scss';
 
 import { actionWrapper } from "./Counter.helper";
 import Icon from "../../../icon/Icon";
-import * as classnames from "classnames";
+import classnames from "classnames";
 
 const Counter = ({
     id,
