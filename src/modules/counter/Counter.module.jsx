@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 
-import { getListCount, setCounterListSelected } from "./Counter.helper";
+import { getListCount, setCounterListSelected, wrapperModalChangeState } from "./Counter.helper";
 import CounterContent from "./components/counter-content/CounterContent";
 import { getCounterList, createCounter, updateCounter, deleteCounter } from "../../services/counter.service";
 import Wellcome from "./components/wellcome/Wellcome";
+
+import ErrorCreationModal from "./components/error-creation-modal/ErrorCreationModal";
 
 class CounterModule extends Component {
     constructor(props) {
@@ -12,7 +14,8 @@ class CounterModule extends Component {
             counterList: [],
             idSelected: new Set(),
             counterListCount: 0,
-            isLoading: false
+            isLoading: false,
+            showErrorCreation: false
         }
     }
 
@@ -67,6 +70,8 @@ class CounterModule extends Component {
                     counterList: counterList.concat(el)
                 });
                 return el;
+            }).catch(er => {
+                this.setState({ showErrorCreation: true });
             });
     }
 
@@ -100,11 +105,22 @@ class CounterModule extends Component {
                     });
                 });
         });
+    }
 
+    changeVisibilityModal = (name) => {
+        this.setState({ [name]: !this.state[name] });
     }
 
     render() {
-        const { counterList, isLoading, counterListCount, idSelected } = this.state;
+        const {
+            counterList,
+            isLoading,
+            counterListCount,
+            idSelected,
+            showErrorCreation
+        } = this.state;
+
+        const handlerModalCreation = wrapperModalChangeState('showErrorCreation', this.changeVisibilityModal);
 
         return (
             <>
@@ -121,6 +137,8 @@ class CounterModule extends Component {
                     deleteCounter={this.deleteCounter}
                     addCounter={this.addCounter}
                 />
+
+                <ErrorCreationModal show={showErrorCreation} changeVisibility={handlerModalCreation}/>
             </>
         );
     }
