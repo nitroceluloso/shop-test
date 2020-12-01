@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { getListCount, setCounterListSelected } from "./Counter.helper";
 import CounterContent from "./components/counter-content/CounterContent";
 import { getCounterList, createCounter, updateCounter, deleteCounter } from "../../services/counter.service";
+import Wellcome from "./components/wellcome/Wellcome";
 
 class CounterModule extends Component {
     constructor(props) {
@@ -16,6 +17,14 @@ class CounterModule extends Component {
     }
 
     componentDidMount() {
+        if(window.innerWidth > 1150) {
+            this.changeLoadingState(() => {
+                this.getCounter().then(this.changeLoadingState);
+            })
+        }
+    }
+
+    onWellcome = () => {
         this.changeLoadingState(() => {
             this.getCounter().then(this.changeLoadingState)
         })
@@ -98,17 +107,21 @@ class CounterModule extends Component {
         const { counterList, isLoading, counterListCount, idSelected } = this.state;
 
         return (
-            <CounterContent
-                isLoading={isLoading}
-                idSelected={idSelected}
-                counterList={counterList}
-                counterListCount={counterListCount}
-                getCounter={this.getCounter}
-                updateCounter={this.updateCounter}
-                setSelectedIds={this.setSelectedIds}
-                deleteCounter={this.deleteCounter}
-                addCounter={this.addCounter}
-            />
+            <>
+                <Wellcome onWellcome={this.onWellcome} />
+
+                <CounterContent
+                    isLoading={isLoading}
+                    idSelected={idSelected}
+                    counterList={counterList}
+                    counterListCount={counterListCount}
+                    getCounter={this.getCounter}
+                    updateCounter={this.updateCounter}
+                    setSelectedIds={this.setSelectedIds}
+                    deleteCounter={this.deleteCounter}
+                    addCounter={this.addCounter}
+                />
+            </>
         );
     }
 }
