@@ -4,7 +4,7 @@ import './CounterList.scss';
 import ListHeader from "./components/list-header/ListHeader";
 import ListCounter from "./components/list-counter/ListCounter";
 import ListEmpty from "./components/list-empty/ListEmpty";
-import * as classnames from "classnames";
+import classnames from "classnames";
 
 const CounterList = ({
     isLoading = false,
@@ -12,7 +12,7 @@ const CounterList = ({
     isTransparentList = false,
     idSelected,
     counterListCount,
-    counterList,
+    counterList = [],
     getCounter = () => {},
     updateCounter= () => {},
     onSelect= () => {}
