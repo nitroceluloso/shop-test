@@ -42,6 +42,7 @@ class CounterContent extends Component {
             isLoading,
             counterListCount,
             idSelected,
+            hasErrorLoading,
             getCounter = () => {},
             updateCounter = () => {},
             setSelectedIds = () => {},
@@ -65,6 +66,7 @@ class CounterContent extends Component {
 
                 <CounterList
                     isLoading={isLoading}
+                    hasErrorLoading={hasErrorLoading}
                     hasFilter={hasFilter}
                     isTransparentList={isTransparentList}
                     idSelected={idSelected}

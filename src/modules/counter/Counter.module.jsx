@@ -15,7 +15,8 @@ class CounterModule extends Component {
             idSelected: new Set(),
             counterListCount: 0,
             isLoading: false,
-            showErrorCreation: false
+            showErrorCreation: false,
+            showErrorGet: false
         }
     }
 
@@ -56,10 +57,13 @@ class CounterModule extends Component {
                 const counterListCount = getListCount(resp);
 
                 this.setState({
+                    showErrorGet: false,
                     counterListCount,
                     counterList: resp
                 });
-            })
+            }).catch(() => {
+                this.setState({ showErrorGet: true });
+            });
     }
 
     addCounter = (title) => {
@@ -117,7 +121,8 @@ class CounterModule extends Component {
             isLoading,
             counterListCount,
             idSelected,
-            showErrorCreation
+            showErrorCreation,
+            showErrorGet
         } = this.state;
 
         const handlerModalCreation = wrapperModalChangeState('showErrorCreation', this.changeVisibilityModal);
@@ -128,6 +133,7 @@ class CounterModule extends Component {
 
                 <CounterContent
                     isLoading={isLoading}
+                    hasErrorLoading={showErrorGet}
                     idSelected={idSelected}
                     counterList={counterList}
                     counterListCount={counterListCount}
