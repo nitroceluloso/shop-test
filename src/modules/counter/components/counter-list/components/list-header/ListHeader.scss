@@ -1,0 +1,12 @@
+.counter-list__header {
+    padding: 0 25px;
+    max-width: 570px;
+    margin: auto;
+    box-sizing: border-box;
+
+    span + span,
+    span + div {
+        margin-left: 7px;
+        margin-right: 7px;
+    }
+}

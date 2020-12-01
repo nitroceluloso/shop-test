@@ -1,0 +1,28 @@
+@import '../../assets/styles/colors.scss';
+
+.search-input {
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    min-width: 280px;
+    // margin: auto;
+
+    svg {
+        position: absolute;
+        left: 22px;
+        top: 16px;
+        z-index: 1;
+    }
+
+    .input-text {
+        padding: 5px 0 5px 56px;
+        height: 48px;
+        box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
+        color: #888b90;
+
+        &:only-child {
+            display: block;
+        }
+    }
+
+}

@@ -1,0 +1,45 @@
+@import './colors.scss';
+
+.text--orange {
+    color: $orange
+}
+
+.capitalize-first-letter::first-letter {
+    text-transform: uppercase;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.fz22 {
+    font-size: 22px;
+}
+
+.fz20 {
+    font-size: 20px;
+}
+
+.fz17 {
+    font-size: 17px;
+}
+
+.fz15 {
+    font-size: 15px;
+}
+
+.fz8 {
+    font-size: 8px;
+}
+
+.font-silver {
+    color: $silver;
+}
+
+.font-dark-silver {
+    color: $darkSilver;
+}
+
+.font-soft-black {
+    color: $softBlack;
+}

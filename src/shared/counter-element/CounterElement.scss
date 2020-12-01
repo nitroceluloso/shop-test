@@ -1,0 +1,28 @@
+@import '../../assets/styles/colors.scss';
+
+.counter-element {
+    box-sizing: border-box;
+    padding: 22px 24px;
+    max-width: 570px;
+    margin: auto;
+
+    & > div:first-child {
+        margin-top: 2px;
+        color: #212121;
+        cursor: pointer;
+    }
+}
+
+.counter-element--selected {
+    @extend .counter-element;
+
+    background-color: rgba($color: $orange, $alpha: 0.2);
+    margin: 6px auto 8px auto;
+    padding: 16px 14px 14px 14px;
+    border-radius: 6px;
+    max-width: 390px;
+
+    @media screen and (min-width: 1150px) {
+        max-width: 550px;
+    }
+}

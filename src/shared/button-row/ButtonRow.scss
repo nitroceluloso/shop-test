@@ -1,0 +1,10 @@
+.button-row {
+
+    .button {
+        flex-shrink: 0;
+    }
+    
+    .button + .button {
+        margin-left: 15px;
+    }
+}

@@ -1,0 +1,31 @@
+@import './colors.scss';
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+svg {
+    display: block;
+    margin: auto;
+}
+
+a {
+    color: $black;
+}
+
+.overflow-x-scroll {
+    overflow-x: scroll;
+}
+
+.opacity-20 {
+    opacity: 20%;
+}
+
+.border-box {
+    box-sizing: border-box;
+}
+
+.position-relative {
+    position: relative;
+}

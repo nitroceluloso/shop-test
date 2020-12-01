@@ -119,3 +119,10 @@ Good luck! 🎉
 We hope your submission is… to die for.
 
 ![Coffin dance](coffin.gif)
+
+
+> So, I started by the basic "base components" like buttons and the inputs, paying attention to the behavior that can have in all the flow of the page. As the web has both mobile and desktop view, I decied to set max and min width to use just a couple of media querys.
+> Before I began to develop the screens, I was thinking about the data flow, and where to store that data to avoid pass variables to several components. So I decied to handle de request on the "top" component, and the data of the counters inside it.
+> The filter, and list component where simple, yet the share functionality was harder (I haven't worked with the clipboard before and the develop of the popup).
+> After the behavior of the web was complete, I focused on the implementation of the error modals, and the final fixes of ui.
+> For the implementation of the error modals I decided to use the top component becauses the api calls was done there.

@@ -1,0 +1,74 @@
+@import '../../assets/styles/colors.scss';
+
+.base-button {
+    font-size: 17px;
+    border-radius: 8px;
+    border: 1px solid rgba($black, 0.1);
+    min-width: 71px;
+    max-height: 40px;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:disabled {
+        opacity: 50%;
+    }
+}
+
+.button {
+    @extend .base-button;
+
+    padding: 8px 18px;
+    box-shadow: 0 2px 8px rgba($black, 0.05);
+    background: #fbfbfb;
+    color: #4a4a4a;
+
+    min-height: 48px;
+    min-width: 90px;
+    display: block;
+}
+
+.button--icon {
+    @extend .button;
+    min-width: 70px;
+}
+
+.button--primary {
+    @extend .base-button;
+
+    background: $orange;
+    padding: 8px 24px;
+    color: $white;
+
+    justify-content: center;
+    border: 1px solid rgba($black, 0.05);
+}
+
+.button--secondary {
+    @extend .base-button;
+
+    color: $orange;
+    background: $white;
+    font-weight: 600;
+    border: 1px solid rgba($black, 0.05);
+}
+
+.button--danger {
+    @extend .base-button;
+
+    color: $red;
+    background: $white;
+    min-width: 100px;
+}
+
+.button--pill {
+    @extend .base-button;
+
+    padding: 8px 18px;
+    border-radius: 99px;
+    color: $black;
+    border: 1px solid rgba($black, 0.05);
+
+    background: #ECECEC;
+}

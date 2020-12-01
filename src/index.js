@@ -1,20 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './assets/styles/index.scss';
 
-// You don't have to use `fetch` btw, use whatever you want
-const getCounters = () => 
-  fetch('/api/v1/counter', { method: 'get' })
-    .then(res => res.json());
+import CounterModule from "./modules/counter/Counter.module";
 
-const App = () => {
-  React.useEffect(() => {
-    getCounters().then(console.log, console.error);
-  }, []);
-
-  return (
-    <h1>Hello, Cornershop!</h1>
-  );
-};
+const App = () => <CounterModule />;
 
 ReactDOM.render(
   <App />,

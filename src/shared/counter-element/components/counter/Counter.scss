@@ -1,0 +1,12 @@
+.counter {
+
+    & > div ~ div {
+        margin-left: 20px;
+        font-size: 20px;
+    }
+
+    & > div:last-child svg {
+        width: 14px;
+        height: 14px;
+    }
+}
