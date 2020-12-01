@@ -13,6 +13,7 @@ const Button = ({
     text,
     icon,
     type = 'default',
+    disabled = false,
     onClickHandler = () => {}
 }) => {
     const classNameStr = classnames(
@@ -24,6 +25,7 @@ const Button = ({
 
     return (
         <button
+            disabled={disabled}
             className={classNameStr}
             onClick={onClickHandler}
         >

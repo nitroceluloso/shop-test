@@ -38,6 +38,7 @@ class ModalSlide extends Component {
             hasButton = false,
             buttonText,
             buttonType,
+            buttonDisabled,
             buttonOnClick = () => {},
             changeVisibility = () => {} } = this.props;
 
@@ -57,6 +58,7 @@ class ModalSlide extends Component {
                                 <Button
                                     type={buttonType}
                                     text={buttonText}
+                                    disabled={buttonDisabled}
                                     onClickHandler={buttonOnClick}
                                 />
                             }

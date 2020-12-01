@@ -7,6 +7,7 @@ import Wellcome from "./components/wellcome/Wellcome";
 
 import ErrorCreationModal from "./components/error-creation-modal/ErrorCreationModal";
 import ErrorUpdateModal from "./components/error-update-modal/ErrorUpdateModal";
+import ErrrorDeleteModal from "./components/error-delete-modal/ErrorDeleteModal";
 
 class CounterModule extends Component {
     constructor(props) {
@@ -20,9 +21,10 @@ class CounterModule extends Component {
             showErrorCreation: false,
             showErrorGet: false,
             showErrorUpdate: false,
-            counterUpdateData: {},
+            counterElement: {},
 
-            updateRetry: () => {}
+            showDeleteModal: false,
+            retry: () => {},
         }
     }
 
@@ -105,30 +107,39 @@ class CounterModule extends Component {
 
                 this.setState({
                     showErrorUpdate: true,
-                    counterUpdateData: {
-                        title: element.title,
-                        quantity
-                    },
-                    updateRetry: () => { this.updateCounter(id, inc) }
+                    counterElement: element,
+                    retry: () => { this.updateCounter(id, inc) }
                 });
             });
     }
 
-    deleteCounter = (selectedCounterList = []) => {
+    deleteCounterList = (selectedCounterList = []) => {
 
-        selectedCounterList.forEach(element => {
-            deleteCounter(element.id)
-                .then((id) => {
-                    const { idSelected, counterList } = this.state;
-                    idSelected.delete(id);
-                    const updatedCounterList = counterList.filter(el => el.id !== id)
+        Promise.all(selectedCounterList.map(this.deleteCounter));
+    }
 
-                    this.setState({
-                        idSelected,
-                        counterList: updatedCounterList
-                    });
+    deleteCounter = (element) => {
+        return deleteCounter(element.id)
+            .then((id) => {
+                const { idSelected, counterList } = this.state;
+                idSelected.delete(id);
+                const updatedCounterList = counterList.filter(el => el.id !== id)
+
+                this.setState({
+                    showDeleteModal: false,
+                    idSelected,
+                    counterList: updatedCounterList
                 });
-        });
+            }).catch(() => {
+                const { showDeleteModal } = this.state;
+                if(showDeleteModal) return false;
+
+                this.setState({
+                    showDeleteModal: true,
+                    counterElement: element,
+                    retry: () => { this.deleteCounter(element) }
+                });
+            });
     }
 
     changeVisibilityModal = (name) => {
@@ -147,11 +158,14 @@ class CounterModule extends Component {
             showErrorUpdate,
             counterUpdateData,
 
-            updateRetry
+            showDeleteModal,
+            counterElement,
+            retry,
         } = this.state;
 
         const handlerModalCreation = wrapperModalChangeState('showErrorCreation', this.changeVisibilityModal);
         const handlerModalUpdate = wrapperModalChangeState('showErrorUpdate', this.changeVisibilityModal);
+        const handlerModalDelete = wrapperModalChangeState('showDeleteModal', this.changeVisibilityModal);
 
         return (
             <>
@@ -166,7 +180,7 @@ class CounterModule extends Component {
                     getCounter={this.getCounter}
                     updateCounter={this.updateCounter}
                     setSelectedIds={this.setSelectedIds}
-                    deleteCounter={this.deleteCounter}
+                    deleteCounter={this.deleteCounterList}
                     addCounter={this.addCounter}
                 />
 
@@ -177,9 +191,16 @@ class CounterModule extends Component {
 
                 <ErrorUpdateModal
                     show={showErrorUpdate}
-                    data={counterUpdateData}
-                    retry={updateRetry}
+                    data={counterElement}
+                    retry={retry}
                     dismiss={handlerModalUpdate}
+                />
+
+                <ErrrorDeleteModal
+                    show={showDeleteModal}
+                    data={counterElement}
+                    retry={retry}
+                    dismiss={handlerModalDelete}
                 />
             </>
         );
