@@ -12,8 +12,8 @@ class CounterFilter extends Component {
     }
 
     onFocusHandler = () => {
-        const { onFocusChangeHandler = () => {} } = this.props;
-        onFocusChangeHandler(true)
+        const { hasErrorLoading = false, onFocusChangeHandler = () => {} } = this.props;
+        if(!hasErrorLoading) onFocusChangeHandler(true);
     }
 
     onBlurHandler = () => {
@@ -28,7 +28,7 @@ class CounterFilter extends Component {
     }
 
     render() {
-        const { onChangeHandler, filter, isOnFocus } = this.props;
+        const { onChangeHandler, filter, isOnFocus, hasErrorLoading } = this.props;
 
         const classStr = classnames(
             'counter-filter',
@@ -39,6 +39,7 @@ class CounterFilter extends Component {
             <header className={classStr}>
                 <InputSearch
                     value={filter}
+                    disabled={hasErrorLoading}
                     onFocusHandler={this.onFocusHandler}
                     onChangehandler={onChangeHandler}
                 />

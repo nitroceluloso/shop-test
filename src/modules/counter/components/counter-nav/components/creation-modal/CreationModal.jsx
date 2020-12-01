@@ -11,17 +11,24 @@ class CreationModal extends Component {
         super(props);
         this.state = {
             name: '',
-            showSuggestions: false
+            showSuggestions: false,
+            buttonDisabled: true,
         }
     }
 
     onChange = ({ target }) => {
-        this.setState({ name: target.value });
+        this.setState({
+            name: target.value,
+            buttonDisabled: target.value ? false : true
+        });
     }
 
     setRecomendation = (name) => {
         this.changeSugestionModalVisibility();
-        this.setState({ name });
+        this.setState({
+            name,
+            buttonDisabled: false
+        });
     }
 
     saveCounter = () => {
@@ -29,7 +36,10 @@ class CreationModal extends Component {
         addCounter(this.state.name)
             .then(() => {
                 changeVisibility();
-                this.setState({ name: '' });
+                this.setState({
+                    name: '',
+                    buttonDisabled: true
+                });
             });
     }
 
@@ -38,7 +48,7 @@ class CreationModal extends Component {
     }
 
     render() {
-        const { name, showSuggestions } = this.state;
+        const { name, showSuggestions, buttonDisabled = true } = this.state;
         const { show, changeVisibility = () => {} } = this.props;
 
         return (
@@ -49,6 +59,7 @@ class CreationModal extends Component {
                     hasButton={true}
                     buttonText="Save"
                     buttonType="call-action"
+                    buttonDisabled={buttonDisabled}
                     buttonOnClick={this.saveCounter}
                     changeVisibility={changeVisibility}
                 >

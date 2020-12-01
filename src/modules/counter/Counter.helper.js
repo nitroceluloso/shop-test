@@ -4,3 +4,5 @@ export const getListCount = (list = []) =>
 export const setCounterListSelected = (idList = new Set()) =>
     (counterList = []) =>
         counterList.map((el) => ({ ...el, isSelected: idList.has(el.id) }))
+
+export const wrapperModalChangeState = (name, cb) => () => { cb(name) }

@@ -6,12 +6,15 @@ import ListCounter from "./components/list-counter/ListCounter";
 import ListEmpty from "./components/list-empty/ListEmpty";
 import classnames from "classnames";
 
+import ListErrorLoading from "./components/list-error-loading/ListErrorLoading";
+
 const CounterList = ({
-    isLoading = false,
+    // isLoading = false,
+    hasErrorLoading = false,
     hasFilter = false,
     isTransparentList = false,
     idSelected,
-    counterListCount,
+    // counterListCount,
     counterList = [],
     getCounter = () => {},
     updateCounter= () => {},
@@ -23,12 +26,14 @@ const CounterList = ({
     const isEmpty = counterList.length === 0 && !hasFilter;
     const isEmptyFiltered = counterList.length === 0 && hasFilter;
 
+    const counterQuantity = counterList.reduce((prev, act) => prev + act.count, 0);
+
     return (
         <div className={classStr}>
             <ListHeader
                 counterList={counterList}
                 idSelected={idSelected}
-                counterListCount={counterListCount}
+                counterListCount={counterQuantity}
                 onRefresh={getCounter}
             />
 
@@ -42,14 +47,16 @@ const CounterList = ({
             }
 
             {
-                isEmpty &&
+                isEmpty && !hasErrorLoading &&
                 <ListEmpty />
             }
 
             {
-                isEmptyFiltered &&
+                isEmptyFiltered && !hasErrorLoading &&
                 <ListEmpty isFiltered />
             }
+
+            <ListErrorLoading show={hasErrorLoading} retry={getCounter} />
 
         </div>
     );
