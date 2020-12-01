@@ -2,7 +2,7 @@ import React from 'react';
 import './Button.scss';
 
 import Icon from "../icon/Icon";
-import * as classnames from "classnames";
+import classnames from "classnames";
 import { getClassName } from "./Button.helper";
 
 /**
@@ -19,7 +19,7 @@ const Button = ({
         'button',
         'flex-justify-center',
         getClassName(type),
-        { 'button--icon': icon? true : false }
+        { 'button--icon': icon ? true : false }
     );
 
     return (

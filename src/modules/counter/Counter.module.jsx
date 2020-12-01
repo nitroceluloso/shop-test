@@ -55,7 +55,7 @@ class CounterModule extends Component {
             .then((el) => {
                 const { counterList } = this.state;
                 this.setState({
-                    counterList: counterList.concat([el])
+                    counterList: counterList.concat(el)
                 });
                 return el;
             });
@@ -76,7 +76,8 @@ class CounterModule extends Component {
             });
     }
 
-    deleteCounter = (selectedCounterList) => {
+    deleteCounter = (selectedCounterList = []) => {
+
         selectedCounterList.forEach(element => {
             deleteCounter(element.id)
                 .then((id) => {

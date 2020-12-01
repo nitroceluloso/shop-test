@@ -1,7 +1,7 @@
 import React from 'react';
 import './CounterElement.scss';
 
-import * as classnames from "classnames";
+import classnames from "classnames";
 import Counter from "./components/counter/Counter";
 
 const CounterElement = ({

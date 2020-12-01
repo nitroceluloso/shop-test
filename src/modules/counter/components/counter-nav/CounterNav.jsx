@@ -27,7 +27,7 @@ class CounterNav extends Component {
 
     render() {
         const { showDeleteModal, showAddModal } = this.state;
-        const { idSelected, counterList, addCounter = () => {} } = this.props;
+        const { idSelected = new Set(), counterList, addCounter = () => {} } = this.props;
         const showActions = idSelected.size ? true : false;
         const deleteTitle = getDeleteModalTitle(counterList);
 

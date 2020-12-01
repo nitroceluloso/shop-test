@@ -23,7 +23,7 @@ class ButtonShare extends Component {
         const { display = false, counterList = [] } = this.props;
 
         return (
-            <div className="position-relative">
+            <div className="action-bar__button-share position-relative">
                 <Button  icon="share" onClickHandler={this.changeVisibilityPopup} />
                 {
                     display &&

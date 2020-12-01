@@ -12,23 +12,20 @@ const ActionBar = ({
 }) => {
     return (
         <aside className="action-bar">
-            <div
-                className="flex-space-between"
-            >
-                <div className="flex-space-between flex-align-center" style={ {width: '160px'} }>
-                    {
-                        showActions &&
-                        <>
-                            <Button  icon="trash"  onClickHandler={onDelete} />
-                            <ButtonShare counterList={counterList} />
-                        </>
-                    }
-                </div>
+            <div className="action-bar__content flex-space-between flex-direction-row-reverse">
                 <Button
                     type="call-action"
                     icon="plus"
                     onClickHandler={onAdd}
                 />
+
+                {
+                    showActions &&
+                    <div className="action-bar__action-buttons flex-space-between flex-align-center" style={ {width: '160px'} }>
+                        <Button  icon="trash"  onClickHandler={onDelete} />
+                        <ButtonShare counterList={counterList} />
+                    </div>
+                }
             </div>
         </aside>
     );

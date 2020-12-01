@@ -1,7 +1,7 @@
 import React from 'react';
 import './ModalBackground.scss';
 
-import * as classnames from "classnames";
+import classnames from "classnames";
 import { validateIfActive } from "./ModalBackground.helper";
 
 const ModalBackground = ({
@@ -10,7 +10,7 @@ const ModalBackground = ({
     onClickHandler
 }) => {
 
-    const classStr = classnames({ 'modal-background--show': display, 'modal-background': !classnames })
+    const classStr = classnames({ 'modal-background--show': display, 'modal-background': !display });
 
     return (
         <div className={classStr} onClick={validateIfActive(disableClick, onClickHandler)}></div>
