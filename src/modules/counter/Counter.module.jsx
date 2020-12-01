@@ -6,6 +6,7 @@ import { getCounterList, createCounter, updateCounter, deleteCounter } from "../
 import Wellcome from "./components/wellcome/Wellcome";
 
 import ErrorCreationModal from "./components/error-creation-modal/ErrorCreationModal";
+import ErrorUpdateModal from "./components/error-update-modal/ErrorUpdateModal";
 
 class CounterModule extends Component {
     constructor(props) {
@@ -15,8 +16,13 @@ class CounterModule extends Component {
             idSelected: new Set(),
             counterListCount: 0,
             isLoading: false,
+
             showErrorCreation: false,
-            showErrorGet: false
+            showErrorGet: false,
+            showErrorUpdate: false,
+            counterUpdateData: {},
+
+            updateRetry: () => {}
         }
     }
 
@@ -88,8 +94,22 @@ class CounterModule extends Component {
                 const counterListCount = getListCount(updatedList);
 
                 this.setState({
+                    showErrorUpdate: false,
                     counterList: updateCounterList,
                     counterListCount
+                });
+            }).catch(() => {
+                const { counterList } = this.state;
+                const element = counterList.find(el => el.id === id);
+                const quantity = inc ? element.count +1 : element.count -1;
+
+                this.setState({
+                    showErrorUpdate: true,
+                    counterUpdateData: {
+                        title: element.title,
+                        quantity
+                    },
+                    updateRetry: () => { this.updateCounter(id, inc) }
                 });
             });
     }
@@ -121,11 +141,17 @@ class CounterModule extends Component {
             isLoading,
             counterListCount,
             idSelected,
+
             showErrorCreation,
-            showErrorGet
+            showErrorGet,
+            showErrorUpdate,
+            counterUpdateData,
+
+            updateRetry
         } = this.state;
 
         const handlerModalCreation = wrapperModalChangeState('showErrorCreation', this.changeVisibilityModal);
+        const handlerModalUpdate = wrapperModalChangeState('showErrorUpdate', this.changeVisibilityModal);
 
         return (
             <>
@@ -144,7 +170,17 @@ class CounterModule extends Component {
                     addCounter={this.addCounter}
                 />
 
-                <ErrorCreationModal show={showErrorCreation} changeVisibility={handlerModalCreation}/>
+                <ErrorCreationModal
+                    show={showErrorCreation}
+                    changeVisibility={handlerModalCreation}
+                />
+
+                <ErrorUpdateModal
+                    show={showErrorUpdate}
+                    data={counterUpdateData}
+                    retry={updateRetry}
+                    dismiss={handlerModalUpdate}
+                />
             </>
         );
     }
