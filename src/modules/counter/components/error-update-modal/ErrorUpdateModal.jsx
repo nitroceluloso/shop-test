@@ -9,8 +9,8 @@ const ErrorUpdateModal = ({
     dismiss = () => {}
 }) => {
 
-    const { title, quantity } = data;
-    const titleStr = `Couldn’t update “${title}” to ${quantity}`;
+    const { title, count } = data;
+    const titleStr = `Couldn’t update “${title}” to ${count}`;
 
     return (
         <ModalDialog

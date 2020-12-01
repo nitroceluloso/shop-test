@@ -8,6 +8,7 @@ const InputSearch = ({
     name,
     value,
     placeholder = '',
+    disabled = false,
     onChangehandler = () => {},
     onFocusHandler = () => {},
     onBlurHandler = () => {}
@@ -18,6 +19,7 @@ const InputSearch = ({
             <Input
                 name={name}
                 value={value}
+                disabled={disabled}
                 placeholder={placeholder}
                 onChange={onChangehandler}
                 onFocus={onFocusHandler}

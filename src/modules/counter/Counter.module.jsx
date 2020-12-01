@@ -88,26 +88,25 @@ class CounterModule extends Component {
     }
 
     updateCounter = (id, inc = true) => {
-        updateCounter(id, inc)
+        return updateCounter(id, inc)
             .then((updatedEl) => {
                 const { counterList, idSelected } = this.state;
                 const updatedList = counterList.map(el => el.id === updatedEl.id ? updatedEl : el);
                 const updateCounterList = setCounterListSelected(idSelected)(updatedList);
-                const counterListCount = getListCount(updatedList);
 
                 this.setState({
                     showErrorUpdate: false,
                     counterList: updateCounterList,
-                    counterListCount
                 });
             }).catch(() => {
                 const { counterList } = this.state;
                 const element = counterList.find(el => el.id === id);
-                const quantity = inc ? element.count +1 : element.count -1;
+                const count = inc ? element.count +1 : element.count -1;
+                const updatedElement = { ...element, count };
 
                 this.setState({
                     showErrorUpdate: true,
-                    counterElement: element,
+                    counterElement: updatedElement,
                     retry: () => { this.updateCounter(id, inc) }
                 });
             });
@@ -156,7 +155,6 @@ class CounterModule extends Component {
             showErrorCreation,
             showErrorGet,
             showErrorUpdate,
-            counterUpdateData,
 
             showDeleteModal,
             counterElement,

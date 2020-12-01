@@ -30,6 +30,14 @@ class CounterContent extends Component {
         this.setState({ isFilterOnFocus: flag });
     }
 
+    updateCounter = (id, inc) => {
+        const { filter } = this.state;
+        const { updateCounter } = this.props;
+        updateCounter(id, inc).then(() => {
+            this.onFilter({ target:{ value: filter } });
+        })
+    }
+
     render() {
         const {
             filter,
@@ -44,7 +52,7 @@ class CounterContent extends Component {
             idSelected,
             hasErrorLoading,
             getCounter = () => {},
-            updateCounter = () => {},
+            // updateCounter = () => {},
             setSelectedIds = () => {},
             deleteCounter = () => {},
             addCounter = () => {}
@@ -58,6 +66,7 @@ class CounterContent extends Component {
             <div className="counter-content">
                 <CounterFilter
                     isOnFocus={isFilterOnFocus}
+                    hasErrorLoading={hasErrorLoading}
                     onChangeHandler={this.onFilter}
                     filter={filter}
                     onClearFilter={this.clearFilter}
@@ -73,7 +82,7 @@ class CounterContent extends Component {
                     counterListCount={counterListCount}
                     counterList={counterListUsed}
                     getCounter={getCounter}
-                    updateCounter={updateCounter}
+                    updateCounter={this.updateCounter}
                     onSelect={setSelectedIds}
                 />
 
