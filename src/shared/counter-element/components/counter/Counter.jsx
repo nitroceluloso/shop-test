@@ -13,7 +13,14 @@ const Counter = ({
 
     const [ increace, decreace ] = actionWrapper(id, count, onChangeHandler);
     const amountClassStr = classnames({ 'font-dark-silver': count === 0 });
-    const minusClassStr = classnames('cursor--pointer flex-align-center', { 'fill-silver': count === 0 });
+
+    const minusClassStr = classnames(
+        {
+            'cursor--pointer' : count !== 0,
+            'fill-silver': count === 0
+        },
+        'flex-align-center'
+    );
 
     return (
         <div className="counter flex">

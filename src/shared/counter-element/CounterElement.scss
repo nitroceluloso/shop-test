@@ -4,12 +4,12 @@
     box-sizing: border-box;
     padding: 22px 24px;
     max-width: 570px;
-
     margin: auto;
 
-    div:first-child {
+    & > div:first-child {
         margin-top: 2px;
         color: #212121;
+        cursor: pointer;
     }
 }
 

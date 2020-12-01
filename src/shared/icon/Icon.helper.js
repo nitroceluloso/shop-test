@@ -8,6 +8,7 @@ import CircleClose from "./components/circleClose";
 import Trash from "./components/trash";
 import Minus from "./components/minus";
 import Refresh from "./components/refresh";
+import Wellcome from "./components/wellcome";
 
 const iconList = new Map([
     ['find', FindIcon],
@@ -17,7 +18,8 @@ const iconList = new Map([
 
     ['trash', Trash],
     ['minus', Minus],
-    ['refresh', Refresh]
+    ['refresh', Refresh],
+    ['wellcome', Wellcome]
 ]);
 
 export const getIcon = (name, width, height) => {
